@@ -2,40 +2,371 @@
 <html lang="en">
 
 <head>
+    <!-- Essential meta tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatable" content="IE=edge">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <link>
-    </link>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans" rel="stylesheet">
+
+    <!-- Custom fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Custom CSS  -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <title>Wanda Weather</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Wanda Weather</h1>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./assets/images/Group 3.png" width="30" height="40" alt="Wanda Weather Logo" class="d-inline-block align-text-middle navLogo-text"> Wanda Weather </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse show" id="navbarNavAltMarkup">
+                <div class="navbar-nav
+                ms-auto">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Find My Holiday</a>
+                    <a class="nav-link" href="#">Contact Us</a>
+                </div>
+            </div>
         </div>
-        <div class="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+    </nav>
+    <!-- Header Section -->
+    <header class="heroHead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <hi class="col-12 text-center hero-text">Wanda Weather</hi>
+                <p class="col-12 text-center hero-text">Find the perfect weather for your holiday</p>
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary hero-text" id="searchBtn">Let's Fly</button>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <h1></h1>
-            <p></p>
+    </header> 
+    <!-- Main Section -->
+    <!-- Main Section -->
+    <main class="container">
+        <!-- Search Section -->
+        <div class="row searchSection">
+            <div class="title col-12">
+                <h2>Find the perfect weather for your holiday</h2>
+            </div>
+            <!-- search bar -->
+            <div class="col-12">
+                <form class="row">
+                    <div class="col-lg-4" id="locationField">
+                        <label for="city" class="form-label">City</label>
+                        <input id="autocomplete" placeholder="Enter a city" type="text" />
+                    </div>
+                    <div class="col-lg-4" id="controls">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country">
+                          <option value="all">All</option>
+                          <option value="au">Australia</option>
+                          <option value="br">Brazil</option>
+                          <option value="ca">Canada</option>
+                          <option value="fr">France</option>
+                          <option value="de">Germany</option>
+                          <option value="mx">Mexico</option>
+                          <option value="nz">New Zealand</option>
+                          <option value="it">Italy</option>
+                          <option value="za">South Africa</option>
+                          <option value="es">Spain</option>
+                          <option value="pt">Portugal</option>
+                          <option value="us" selected>U.S.A.</option>
+                          <option value="uk">United Kingdom</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-primary mt-3" id="searchBtn">Search</button>
+                    </div>
+                </form>
         </div>
-        <div id="map"></div>
-        <div id="weather"></div>
-        <div class="footer">
-            <p>&copy; 2024 Wanda Weather</p>
+        <!-- Map and Weather Section -->
+        <div class="row mapWeather">
+            <div class="col-lg-8">
+                <!-- Map View -->
+                <div id="map"></div>
+            
+                <div id="listing">
+                  <table id="resultsTable">
+                    <tbody id="results"></tbody>
+                  </table>
+                </div>
+            <!-- Hotel info -->
+                <div style="display: none">
+                  <div id="info-content">
+                    <table>
+                      <tr id="iw-url-row" class="iw_table_row">
+                        <td id="iw-icon" class="iw_table_icon"></td>
+                        <td id="iw-url"></td>
+                      </tr>
+                      <tr id="iw-address-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Address:</td>
+                        <td id="iw-address"></td>
+                      </tr>
+                      <tr id="iw-phone-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Telephone:</td>
+                        <td id="iw-phone"></td>
+                      </tr>
+                      <tr id="iw-rating-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Rating:</td>
+                        <td id="iw-rating"></td>
+                      </tr>
+                      <tr id="iw-website-row" class="iw_table_row">
+                        <td class="iw_attribute_name">Website:</td>
+                        <td id="iw-website"></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+            
+                <!-- 
+                  The `defer` attribute causes the callback to execute after the full HTML
+                  document has been parsed. For non-blocking uses, avoiding race conditions,
+                  and consistent behavior across browsers, consider loading using Promises.
+                  See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+                  for more information.
+                  -->
+            
+            </div>
+            <div class="col-lg-4">
+                <!-- Weather Cards -->
+                <div id="weather-cards" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- First Card -->
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <div class="card weather-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Day 1</h5>
+                                    <p class="card-text">Date: 01/01/2022</p>
+                                    <p class="card-text">High: 20°C, Low: 10°C</p>
+                                    <p class="card-text">Feels Like: 15°C</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Second Card -->
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <div class="card weather-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Day 2</h5>
+                                    <p class="card-text">Date: 02/01/2022</p>
+                                    <p class="card-text">High: 20°C, Low: 10°C</p>
+                                    <p class="card-text">Feels Like: 15°C</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Third Card -->
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <div class="card weather-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Day 3</h5>
+                                    <p class="card-text">Date: 03/01/2022</p>
+                                    <p class="card-text">High: 20°C, Low: 10°C</p>
+                                    <p class="card-text">Feels Like: 15°C</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Fourth Card -->
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <div class="card weather-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Day 4</h5>
+                                    <p class="card-text">Date: 04/01/2022</p>
+                                    <p class="card-text">High: 20°C, Low: 10°C</p>
+                                    <p class="card-text">Feels Like: 15°C</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fifth Card -->
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <div class="card weather-card">
+                                <div class="card-body">
+                                    <h5 class="card-title
+                                    ">Day 5</h5>
+                                    <p class="card-text">Date: 05/01/2022</p>
+                                    <p class="card-text">High: 20°C, Low: 10°C</p>
+                                    <p class="card-text">Feels Like: 15°C</p>
+                                    <p class="card-text">Humidity: 50%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev custom-carousel-control carousel-dark" type="button" data-bs-target="#weather-cards" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next custom-carousel-control carousel-dark" type="button" data-bs-target="#weather-cards" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>                 
+            </div>
         </div>
-    </div>
-    <script src="assets/js/logic.js"></script>
+        <!-- Nearest Hotels Section -->
+        <div class="row nearestHotels">
+            <div class="title col-12">
+                <h2>Nearest Hotels</h2>
+            </div>
+            <!-- Hotel Cards Carousel -->
+            <div id="hotel-cards" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- First Group of 4 Cards -->
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <div class="row">
+                            <!-- First Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 1</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Second Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 2</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Third Card -->                            
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 3</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fourth Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 4</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <!-- Second Group of 4 Cards -->
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="row">
+                            <!-- Fifth Card -->                            
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 5</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sixth Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 6</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Seventh Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 7</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Eighth Card -->
+                            <div class="col-lg-3">
+                                <div class="card hotel-card">
+                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hotel 8</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                                        <a href="#" class="btn btn-primary">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev carousel-dark" type="button" data-bs-target="#hotel-cards" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next carousel-dark" type="button" data-bs-target="#hotel-cards" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- Call to Action Section -->
+    </main>
+    <!-- Call to Action Section -->
+    <section class="ctaSection" id="signUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <i class="bi bi-airplane-engines-fill"></i>
+                    <h2>Find the perfect weather for your holiday</h2>
+                    <button class="btn btn-primary" id="searchBtn">Let's Fly</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; Wanda Weather 2024 All Rights Reserved.</p>
+        </div>
+    </footer>
+    <!-- JavsScript CDN -->
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1lDkImW84aOgn8fnfLDhcQlZgsAJb7u8&callback=initMap&libraries=places&v=weekly"
+    defer
+    ></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Code to JS File -->
+    <script src="./assets/js/logic.js"></script>
 </body>
-</html>
 
+</html>
