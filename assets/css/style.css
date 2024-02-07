@@ -62,6 +62,13 @@ body {
     /* color: var(--secondary-color); */
     text-align: center;
 }
+.hero-items {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--secondary-color);
+}
 
 /* Map Section */
 #map {
@@ -165,3 +172,14 @@ body {
   .iw_table_icon {
     text-align: right;
   }
+
+  /* Weather Card */
+  .weather-card {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    }
+
+    .hide {
+      display: none;
+    }

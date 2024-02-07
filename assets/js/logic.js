@@ -16,7 +16,6 @@ let places;
 let infoWindow;
 let markers = [];
 let autocomplete;
-const countryRestrict = { country: "us" };
 const MARKER_PATH =
     "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 const hostnameRegexp = new RegExp("^https?://.+?/");
@@ -77,8 +76,8 @@ const countries = {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: countries["us"].zoom,
-        center: countries["us"].center,
+        zoom: countries["uk"].zoom,
+        center: countries["uk"].center,
         mapTypeControl: false,
         panControl: false,
         zoomControl: false,
@@ -92,8 +91,7 @@ function initMap() {
     autocomplete = new google.maps.places.Autocomplete(
         document.getElementById("autocomplete"),
         {
-            types: ["(cities)"],
-            componentRestrictions: countryRestrict,
+            types: ["(cities)"],            
             fields: ["geometry"],
         },
     );
@@ -115,6 +113,10 @@ function onPlaceChanged() {
         map.setZoom(15);
         search();
         getWeatherData(place.geometry.location.lat(), place.geometry.location.lng());
+        // Get the element
+        var weatherCard = document.getElementById('weather-cards');
+        // Remove the 'hide' class
+        weatherCard.classList.remove('hide');
     } else {
         document.getElementById("autocomplete").placeholder = "Enter a city";
     }
