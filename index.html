@@ -26,8 +26,7 @@
 
 <body>
     <!-- Navbar Section -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="./assets/images/Group 3.png" width="30" height="40" alt="Wanda Weather Logo" class="d-inline-block align-text-middle navLogo-text"> Wanda Weather </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -45,12 +44,12 @@
         </div>
     </nav>
     <!-- Header Section -->
-    <header class="heroHead">
+    <header class="header">
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <hi class="col-12 text-center hero-text">Wanda Weather</hi>
-                <p class="col-12 text-center hero-text">Find the perfect weather for your holiday</p>
-                <div class="col-12 text-center">
+            <div class="row hero-items">
+                <h1 class="text-center hero-text">Wanda Weather</h1>
+                <h1 class="text-center hero-text">Find the perfect weather for your holiday</h1>
+                <div class="text-center">
                     <button class="btn btn-primary hero-text" id="searchBtn">Let's Fly</button>
                 </div>
             </div>
@@ -58,7 +57,7 @@
     </header> 
     <!-- Main Section -->
     <!-- Main Section -->
-    <main class="container">
+    <main class="container my-5">
         <!-- Search Section -->
         <div class="row searchSection">
             <div class="title col-12">
@@ -67,91 +66,75 @@
             <!-- search bar -->
             <div class="col-12">
                 <form class="row">
-
-                    <div class="col-lg-4" id="locationField">
-                        <label for="city" class="form-label">City</label>
-                        <input id="autocomplete" placeholder="Enter a city" type="text" />
+                    <div class="col-lg-4 search-container mt-1" id="locationField">
+                        <!-- <label for="city" class="form-label">Destination</label> -->
+                        <input class="form-control border-end-0 border rounded-pill" id="autocomplete" placeholder="Enter your Destination" type="text" />
                     </div>
                     <div class="col-lg-4" id="controls">
                         <label for="country" class="form-label">Country</label>
-                        <select id="country">
-                          <option value="all">All</option>
-                          <option value="au">Australia</option>
-                          <option value="br">Brazil</option>
-                          <option value="ca">Canada</option>
-                          <option value="fr">France</option>
-                          <option value="de">Germany</option>
-                          <option value="mx">Mexico</option>
-                          <option value="nz">New Zealand</option>
-                          <option value="it">Italy</option>
-                          <option value="za">South Africa</option>
-                          <option value="es">Spain</option>
-                          <option value="pt">Portugal</option>
-                          <option value="us" selected>U.S.A.</option>
-                          <option value="uk">United Kingdom</option>
-                        </select>
-
-                    </div>
+                            <select id="country">
+                            <option value="all" selected>All</option>
+                            <option value="au">Australia</option>
+                            <option value="br">Brazil</option>
+                            <option value="ca">Canada</option>
+                            <option value="fr">France</option>
+                            <option value="de">Germany</option>
+                            <option value="mx">Mexico</option>
+                            <option value="nz">New Zealand</option>
+                            <option value="it">Italy</option>
+                            <option value="za">South Africa</option>
+                            <option value="es">Spain</option>
+                            <option value="pt">Portugal</option>
+                            <option value="us">U.S.A.</option>
+                            <option value="uk">United Kingdom</option>
+                            </select>
+                    </div>                     
                     <div class="col-lg-4">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date">
-                    </div>
-                    <div class="col-lg-12">
-                        <button type="submit" class="btn btn-primary mt-3" id="searchBtn">Search</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary mt-1 rounded-pill" id="searchBtn">Search</button>
+                    </div>               
+                    
                 </form>
         </div>
         <!-- Map and Weather Section -->
         <div class="row mapWeather">
-            <div class="col-lg-8">
+            <div class="col-lg-8 my-5 px-3">
                 <!-- Map View -->
                 <div id="map"></div>
-
-            
-                <div id="listing">
-                  <table id="resultsTable">
-                    <tbody id="results"></tbody>
-                  </table>
+                <!-- Hotel Listing: Crucial to Map Functionality but no need to display-->            
+                <div id="listing" style="display: none;">
+                    <table id="resultsTable">
+                        <tbody id="results"></tbody>
+                    </table>
                 </div>
             <!-- Hotel info -->
                 <div style="display: none">
-                  <div id="info-content">
-                    <table>
-                      <tr id="iw-url-row" class="iw_table_row">
-                        <td id="iw-icon" class="iw_table_icon"></td>
-                        <td id="iw-url"></td>
-                      </tr>
-                      <tr id="iw-address-row" class="iw_table_row">
-                        <td class="iw_attribute_name">Address:</td>
-                        <td id="iw-address"></td>
-                      </tr>
-                      <tr id="iw-phone-row" class="iw_table_row">
-                        <td class="iw_attribute_name">Telephone:</td>
-                        <td id="iw-phone"></td>
-                      </tr>
-                      <tr id="iw-rating-row" class="iw_table_row">
-                        <td class="iw_attribute_name">Rating:</td>
-                        <td id="iw-rating"></td>
-                      </tr>
-                      <tr id="iw-website-row" class="iw_table_row">
-                        <td class="iw_attribute_name">Website:</td>
-                        <td id="iw-website"></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-            
-                <!-- 
-                  The `defer` attribute causes the callback to execute after the full HTML
-                  document has been parsed. For non-blocking uses, avoiding race conditions,
-                  and consistent behavior across browsers, consider loading using Promises.
-                  See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
-                  for more information.
-                  -->
-            
-
+                    <div id="info-content">
+                        <table>
+                        <tr id="iw-url-row" class="iw_table_row">
+                            <td id="iw-icon" class="iw_table_icon"></td>
+                            <td id="iw-url"></td>
+                        </tr>
+                        <tr id="iw-address-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Address:</td>
+                            <td id="iw-address"></td>
+                        </tr>
+                        <tr id="iw-phone-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Telephone:</td>
+                            <td id="iw-phone"></td>
+                        </tr>
+                        <tr id="iw-rating-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Rating:</td>
+                            <td id="iw-rating"></td>
+                        </tr>
+                        <tr id="iw-website-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Website:</td>
+                            <td id="iw-website"></td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>          
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 my-5 px-3">
                 <!-- Weather Cards -->
                 <div id="weather-cards" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -234,122 +217,6 @@
             </div>
         </div>
         <!-- Nearest Hotels Section -->
-        <div class="row nearestHotels">
-            <div class="title col-12">
-                <h2>Nearest Hotels</h2>
-            </div>
-            <!-- Hotel Cards Carousel -->
-            <div id="hotel-cards" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- First Group of 4 Cards -->
-                    <div class="carousel-item active" data-bs-interval="3000">
-                        <div class="row">
-                            <!-- First Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 1</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Second Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 2</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Third Card -->                            
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 3</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Fourth Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 4</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <!-- Second Group of 4 Cards -->
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="row">
-                            <!-- Fifth Card -->                            
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 5</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Sixth Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 6</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Seventh Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel1.jpg" class="card-img-top" alt="Hotel 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 7</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Eighth Card -->
-                            <div class="col-lg-3">
-                                <div class="card hotel-card">
-                                    <img src="./assets/images/hotel2.jpg" class="card-img-top" alt="Hotel 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hotel 8</h5>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                                        <a href="#" class="btn btn-primary">Save</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev carousel-dark" type="button" data-bs-target="#hotel-cards" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next carousel-dark" type="button" data-bs-target="#hotel-cards" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
         <!-- Call to Action Section -->
     </main>
     <!-- Call to Action Section -->
