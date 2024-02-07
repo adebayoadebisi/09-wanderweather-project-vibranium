@@ -51,8 +51,8 @@
     <header class="header">
         <div class="container h-100">
             <div class="row hero-items">
-                <h1 class="text-center hero-text">Wanda Weather</h1>
-                <h1 class="text-center hero-text">Find the perfect weather for your holiday</h1>
+                <h1 class="text-center hero-text">Find the perfect location</h1>
+                <h1 class="text-center hero-text">Find the perfect weather </h1>
                 <div class="text-center">
                     <button class="btn btn-primary hero-text" id="searchBtn">Let's Fly</button>
                 </div>
@@ -64,39 +64,16 @@
     <main class="container my-5">
         <!-- Search Section -->
         <div class="row searchSection">
-            <div class="title col-12">
+            <div class="title col-12 text-center">
                 <h2>Find the perfect weather for your holiday</h2>
             </div>
             <!-- search bar -->
             <div class="col-12">
-                <form class="row">
-                    <div class="col-lg-4 search-container mt-1" id="locationField">
+                <form class="row .flex-row">
+                    <div class="col search-container mt-1 searchBar" id="locationField">
                         <!-- <label for="city" class="form-label">Destination</label> -->
-                        <input class="form-control border-end-0 border rounded-pill" id="autocomplete" placeholder="Enter your Destination" type="text" />
-                    </div>
-                    <div class="col-lg-4" id="controls">
-                        <label for="country" class="form-label">Country</label>
-                            <select id="country">
-                            <option value="all" selected>All</option>
-                            <option value="au">Australia</option>
-                            <option value="br">Brazil</option>
-                            <option value="ca">Canada</option>
-                            <option value="fr">France</option>
-                            <option value="de">Germany</option>
-                            <option value="mx">Mexico</option>
-                            <option value="nz">New Zealand</option>
-                            <option value="it">Italy</option>
-                            <option value="za">South Africa</option>
-                            <option value="es">Spain</option>
-                            <option value="pt">Portugal</option>
-                            <option value="us">U.S.A.</option>
-                            <option value="uk">United Kingdom</option>
-                            </select>
-                    </div>                     
-                    <div class="col-lg-4">
-                        <button type="submit" class="btn btn-primary mt-1 rounded-pill" id="searchBtn">Search</button>
-                    </div>               
-                    
+                        <input class="form-control w-50 border-end-0 border rounded-pill" id="autocomplete" placeholder="Enter your Destination" type="text" />
+                    </div>                    
                 </form>
         </div>
         <!-- Map and Weather Section -->
@@ -140,7 +117,7 @@
             </div>
             <div class="col-lg-4 my-5 px-3">
                 <!-- Weather Cards -->
-                <div id="weather-cards" class="carousel slide" data-bs-ride="carousel">
+                <div id="weather-cards" class="carousel slide hide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <!-- First Card -->
                         <div class="carousel-item active" data-bs-interval="2000">
@@ -209,11 +186,11 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev custom-carousel-control carousel-dark" type="button" data-bs-target="#weather-cards" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next custom-carousel-control carousel-dark" type="button" data-bs-target="#weather-cards" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
