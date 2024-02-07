@@ -1,24 +1,80 @@
+/* Colour Variables */
+:root {
+    --primary-color: #422672;
+    --secondary-color: #fefefe;
+    --tertiary-color: #c12222;
+}
 
+/* Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+/* Body */
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--secondary-color);
+}
+.navbar-brand {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.navbar-nav .nav-link {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active{
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+/* Header Section */
+.header {
+  position: relative;
+    background-image: url('../images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70vh;
+    /* color: var(--secondary-color); */
+    text-align: center;
+}
+
+/* Map Section */
 #map {
     height: 100%;
     height: 500px;
     width: 100%;
     width: 850px;
+    border: 3px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 0 10px var(--tertiary-color);
   }
-  
-  /* 
-   * Optional: Makes the sample page fill the window. 
-   */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    padding: 0 !important;
-  }
+
   
   table {
     font-size: 12px;
@@ -40,8 +96,8 @@
   }
   
   
-  #listing {
-    position: absolute;
+  /* #listing {
+    position: relative;
     width: 200px;
     height: 470px;
     overflow: auto;
@@ -49,18 +105,18 @@
     top: 0px;
     cursor: pointer;
     overflow-x: hidden;
-  }
+  } */
   
   #findhotels {
     font-size: 14px;
   }
   
-  #locationField {
+  /* #locationField {
     -webkit-box-flex: 1 1 190px;
     -ms-flex: 1 1 190px;
     flex: 1 1 190px;
     margin: 0 8px;
-  }
+  } */
   
   #controls {
     -webkit-box-flex: 1 1 140px;
@@ -68,9 +124,9 @@
     flex: 1 1 140px;
   }
   
-  #autocomplete {
+  /* #autocomplete {
     width: 100%;
-  }
+  } */
   
   #country {
     width: 100%;
@@ -109,25 +165,3 @@
   .iw_table_icon {
     text-align: right;
   }
-  
-/* Text */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-}
-
-/* Navigation Bar */
-.navbar {
-    background-color: #ff05d1;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-}
