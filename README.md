@@ -39,7 +39,7 @@ SO THAT I can confidently plan and book my next holiday with ease.
 - WHEN the user decides to book,
 - THEN  the user should be able to sign up and contact.
 
-## Password Generator Application
+## Wanda Weather Application
 The following images shows the Wanda Weather Application displaying a working application.
 
 ![Work Day Scheduler: Screenshot Laptop](./assets/images/laptop-wander.html.png)
