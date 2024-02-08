@@ -1,16 +1,3 @@
-// let map;
-
-// async function initMap() {
-//   const { Map } = await google.maps.importLibrary("maps");
-
-//   map = new Map(document.getElementById("map"), {
-//     center: { lat: 52.4862, lng: -1.8904 },
-//     zoom: 12,
-//   });
-// }
-
-// initMap();
-
 let map;
 let places;
 let infoWindow;

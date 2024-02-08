@@ -28,12 +28,12 @@
     <title>Wanda Weather</title>
 </head>
 
-<body>
+<body class="body">
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="./assets/images/Group 3.png" width="30" height="40" alt="Wanda Weather Logo" class="d-inline-block align-text-middle navLogo-text"> Wanda Weather </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            <a class="navbar-brand" href="#"><img src="./assets/images/logos.png" width="40" height="60" alt="Wanda Weather Logo" class="d-inline-block align-text-middle navLogo-text"> Wanda Weather </a>
+            <button class="navbar-toggler navMobile" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +41,7 @@
                 <div class="navbar-nav
                 ms-auto">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Find My Holiday</a>
+                    <a class="nav-link" href="#locationField">Find My Holiday</a>
                     <a class="nav-link" href="#">Contact Us</a>
                 </div>
             </div>
@@ -51,16 +51,17 @@
     <header class="header">
         <div class="container h-100">
             <div class="row hero-items">
-                <h1 class="text-center hero-text">Find the perfect location</h1>
-                <h1 class="text-center hero-text">Find the perfect weather </h1>
+                <h1 class="text-center hero-text">Discover Your Perfect Getaway</h1>
+                <p class="text-center hero-text">Your Ultimate Hotel and Weather Companion</p>
                 <div class="text-center">
-                    <button class="btn btn-primary hero-text" id="searchBtn">Let's Fly</button>
+                    <a  href="#locationField" class="btn btnColor hero-text" id="searchBtn"  href="#locationField">Plan Your Escape</a>
+                </div>        
             </div>
         </div>
     </header> 
     <!-- Main Section -->
     <!-- Main Section -->
-    <main class="container my-5">
+    <main class="container my-5 mainContent">
         <!-- Search Section -->
         <div class="row searchSection">
             <div class="title col-12 text-center">
@@ -77,7 +78,7 @@
         </div>
         <!-- Map and Weather Section -->
         <div class="row mapWeather">
-            <div class="col-lg-8 my-5 px-3">
+            <div class="col-md-8 col-lg-8 my-5 px-3">
                 <!-- Map View -->
                 <div id="map"></div>
                 <!-- Hotel Listing: Crucial to Map Functionality but no need to display-->            
@@ -114,9 +115,16 @@
                     </div>
                 </div>          
             </div>
-            <div class="col-lg-4 my-5 px-3">
+            <div class="col-md-4 col-lg-4 my-5 px-3">
                 <!-- Weather Cards -->
-                <div id="weather-cards" class="carousel slide hide" data-bs-ride="carousel">
+                <div id="weather-cards" class="carousel slide hide custom-carousel" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#weather-cards" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#weather-cards" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#weather-cards" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#weather-cards" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#weather-cards" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
                     <div class="carousel-inner">
                         <!-- First Card -->
                         <div class="carousel-item active" data-bs-interval="2000">
@@ -185,11 +193,11 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#weather-cards" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#weather-cards" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -203,35 +211,34 @@
     <section class="ctaSection" id="signUp">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
-                    <i class="bi bi-airplane-engines-fill"></i>
-                    <h2>Find the perfect weather for your holiday</h2>
-                    <button class="btn btn-primary" id="searchBtn">Let's Fly</button>
-                    <!-- Sign-up section -->
-                    <section class="signup-section" id="signup">
-                        <div class="container">
-                            <div class="row">
-                            <div class="col-md-10 col-lg-8 mx-auto text-center">
-                                <h2 class="text-light-black ab-5">Subscribe to receive weather updates!</h2>
-                                <form class="form-inline d-flex">
-                                    <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" 
-                                    placeholder="Enter your email..."/>
-                                    <button class="btn btn-primary mx-auto" type="submit">Subscribe</button>
+                <div class="col-12 text-center textCta">
+                    <h2>Get Instant Access - Sign Up Here</h2>
+                    <p>Get the latest weather updates and hotel deals straight to your inbox</p>
+                    <form class="row">
+                        <div class="col w-50">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="Enter your email" aria-label="Enter your email" aria-describedby="button-addon2">
+                                <button class="btn btnColor" type="button" id="button-addon2">Sign Up</button>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </form>               
                 </div>
             </div>
         </div>
     </section>
     <!-- Footer Section -->
     <footer>
-        <p>Get in touch with us via:</p>
-        <div class="social-icons" id="social-icon">
-            <a href="https://www.instagram.com/wandaweathervibe/"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com/WandaW66526"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex footText">
+                    <p> Let's Connect:</p>
+                </div>             
+                <div class="col-md-6 social-icons d-flex socialIcon" id="social-icon">
+                    <a href="https://www.instagram.com/wandaweathervibe/"><i class="fa-brands fa-instagram icons"></i></a>
+                    <a href="https://twitter.com/WandaW66526"><i class="fa-brands fa-x-twitter icons"></i></a>
+                </div>
+            </div>                
+        </div>      
 
         <div class="container">
             <p>&copy; Wanda Weather 2024 All Rights Reserved.</p>
