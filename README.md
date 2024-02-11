@@ -42,7 +42,7 @@ SO THAT I can confidently plan and book my next holiday with ease.
 ## Wanda Weather Application
 The following images shows the Wanda Weather Application displaying a working application.
 
-![Work Day Scheduler: Screenshot Laptop](./assets/images/laptop-wander.html.png)
+![Work Day Scheduler: Screenshot Laptop](./assets/images/laptop-wander.png)
 
 > **Note** This is a screenshot of the deployed Wanda Weather Application on Laptop screen.
 

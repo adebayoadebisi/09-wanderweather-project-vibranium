@@ -79,7 +79,7 @@ function initMap() {
         document.getElementById("autocomplete"),
         {
             types: ["(cities)"],            
-            fields: ["geometry"],
+            fields: ["geometry", "name"],
         },
     );
     places = new google.maps.places.PlacesService(map);
@@ -93,7 +93,7 @@ function initMap() {
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
 function onPlaceChanged() {
-    const place = autocomplete.getPlace();
+    const place = autocomplete.getPlace();  
 
     if (place.geometry && place.geometry.location) {
         map.panTo(place.geometry.location);
@@ -104,10 +104,67 @@ function onPlaceChanged() {
         var weatherCard = document.getElementById('weather-cards');
         // Remove the 'hide' class
         weatherCard.classList.remove('hide');
+        // Save search to local storage
+        saveSearch(place.name);
     } else {
         document.getElementById("autocomplete").placeholder = "Enter a city";
     }
 }
+// Save search to local storage
+function saveSearch(searchTerm) {
+    let searches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+    searches = searches.filter(search => search !== searchTerm); // Remove duplicate
+    searches.unshift(searchTerm); // Add to the start of the array
+    searches = searches.slice(0, 6); // Keep only the last 6 searches
+
+    localStorage.setItem('recentSearches', JSON.stringify(searches));
+    loadRecentSearches();
+}
+// Load recent searches from local storage
+function loadRecentSearches() {
+    const searches = JSON.parse(localStorage.getItem('recentSearches')) || [];
+    const recentSearchesContainer = document.getElementById('recent-searches');
+    // Clear existing buttons
+    recentSearchesContainer.innerHTML = ''; 
+
+    searches.forEach(search => {
+        const button = document.createElement('button');
+        button.textContent = search;
+        button.classList.add('btn', 'recent-search-btn', 'm-1'); // Bootstrap classes for styling
+        button.onclick = function() { 
+            // Functionality to perform search again
+            document.getElementById("autocomplete").value = search;
+            // Trigger search functionality if needed
+            manualSearch(search);
+        };
+        recentSearchesContainer.appendChild(button);
+    });
+}
+// Perform search when clicking on a recent search
+function manualSearch(searchTerm) {
+    const request = {
+        query: searchTerm,
+        fields: ["name", "geometry"],
+    };
+    places.findPlaceFromQuery(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            map.panTo(results[0].geometry.location);
+            map.setZoom(15);
+            search();
+            getWeatherData(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            // Get the element
+            var weatherCard = document.getElementById('weather-cards');
+            // Remove the 'hide' class
+            weatherCard.classList.remove('hide');
+            // Save search to local storage
+            saveSearch(searchTerm);
+        }
+    });
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', loadRecentSearches);
+
 
 // Search for hotels in the selected city, within the viewport of the map.
 function search() {
